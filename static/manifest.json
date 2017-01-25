@@ -1,0 +1,29 @@
+{
+  "name": "知乎日报 PWA",
+  "short_name": "知乎日报",
+  "lang": "zh-CN",
+  "description": "知乎日报 Progressive Web App，非官方版",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "144x144 256x256"
+    }
+  ],
+  "start_url": "/",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.app1",
+      "id": "com.example.app1"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/app/example-app1/id123456789"
+    }
+  ],
+  "display": "fullscreen",
+  "background_color": "#fff",
+  "theme_color": "aliceblue",
+  "orientation": "portrait"
+}
