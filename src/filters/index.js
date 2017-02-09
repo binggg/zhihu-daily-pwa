@@ -21,7 +21,7 @@ export const imgURLFilter = (url) => {
 }
 
 export const dateHeadingFilter = (dateStr) => {
-  const date = new Date(dateStr.substr(0, 4), dateStr.substr(4, 2), dateStr.substr(6, 2))
+  const date = new Date(dateStr.substr(0, 4), dateStr.substr(4, 2) - 1, dateStr.substr(6, 2))
   const now = new Date()
   const weekday = [
     '一',

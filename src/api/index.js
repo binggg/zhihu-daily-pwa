@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 
-const API_HOST = '//zh.zhaobing.site/api/zhihu'
+const API_HOST = 'https://zh.zhaobing.site/api/zhihu'
 
 Vue.use(VueResource)
 

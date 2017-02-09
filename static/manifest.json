@@ -1,6 +1,6 @@
 {
   "name": "知乎日报 PWA",
-  "short_name": "知乎日报",
+  "short_name": "知乎日报PWA",
   "lang": "zh-CN",
   "description": "知乎日报 Progressive Web App，非官方版",
   "icons": [

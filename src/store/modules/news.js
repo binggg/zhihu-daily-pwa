@@ -20,7 +20,7 @@ const state = {
 const getters = {
   topStories: state => state.top.map((id) => state.stories[id]),
   latestStories: state => Object.keys(state.date)
-    .sort((a, b) => new Date(a) - new Date(b))
+    .sort((a, b) => b - a)
     .map(date => ({date, stories: state.date[date].map((id) => state.stories[id])}))
 }
 
