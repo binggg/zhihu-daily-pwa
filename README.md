@@ -6,7 +6,7 @@
 
 ## 访问地址
 
-![知乎日报 PWA](https://zh.zhaobing.site)
+[知乎日报 PWA](https://zh.zhaobing.site)
 
 ## 构建命令
 
