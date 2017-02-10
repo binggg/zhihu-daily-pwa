@@ -8,6 +8,5 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 138.197.225.210\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-# 添加一个名为after_success的钩子，并写入你需要执行部署操作的命令
 after_success:
 - ssh root@138.197.225.210 '/data/shell/deploy-zh-zhaobing-site.sh'
