@@ -1,8 +1,14 @@
 # zhihu-daily-pwa
 
-> A Vue.js project
+[![Build Status](https://travis-ci.org/binggg/zhihu-daily-pwa.svg?branch=master)](https://travis-ci.org/binggg/zhihu-daily-pwa)
 
-## Build Setup
+> 非官方 知乎日报 PWA (Progressive Web App) 版本，基于 Vue.js 2.0
+
+## 访问地址
+
+![知乎日报 PWA](https://zh.zhaobing.site)
+
+## 构建命令
 
 ``` bash
 # install dependencies
