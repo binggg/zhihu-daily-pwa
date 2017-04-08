@@ -11,6 +11,8 @@ export const imgURLFilter = (url) => {
   ]
   const pattern = /https?:\/\/([^/]+)([^"']*)/g
 
+  if (!url) return url
+
   return url.replace(pattern, function (match, domain, path) {
     if (match && domains.includes(domain)) {
       return `//zh.zhaobing.site/api/${domain}${path}`
@@ -38,5 +40,5 @@ export const dateHeadingFilter = (dateStr) => {
     return '今日热闻'
   }
 
-  return `${padStr(date.getMonth() + 1, 2, '0')}月${padStr(date.getDate(), 2, '0')}日 星期${weekday[date.getDay()]}`
+  return `${padStr(date.getMonth() + 1, 2, '0')}月${padStr(date.getDate(), 2, '0')}日 星期${weekday[date.getDay() - 1]}`
 }
