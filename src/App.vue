@@ -39,19 +39,17 @@
         </div>
       </main>
     </div>
-    <splash></splash>
   </div>
 </template>
 
 <script>
 import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
-import Splash from './components/Splash'
 require('./assets/material.css')
 export default {
   name: 'app',
-  components: {
-    Splash
+  created () {
+    this.$store.dispatch('fetchLatestNews')
   },
   computed: {
     title () {
@@ -93,5 +91,29 @@ export default {
   .mdl-layout__title,
   .mdl-layout-title {
     font-weight: 500!important;
+  }
+
+  .app-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .logo {
+    background: transparent url(./assets/logo.png) no-repeat;
+    width: 2.5em;
+    height: 2.5em;
+    background-size: cover;
+    margin: 1em;
+    display: inline-block;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
   }
 </style>
