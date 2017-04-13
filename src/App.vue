@@ -27,7 +27,7 @@
           <div class="mdl-layout-title">
             知乎日报 PWA
           </div>
-          <small style="color:#ccc;">1.0.1</small>
+          <small style="color:#ccc;">1.0.2</small>
         </div>
          <nav class="mdl-navigation">
         <router-link class="mdl-navigation__link" to="/"><i class="material-icons">home</i> 首页</router-link>
