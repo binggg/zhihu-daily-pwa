@@ -27,7 +27,10 @@ const getters = {
   favoriteStories: state => Object.keys(state.favorites)
     .filter(id => state.favorites[id])
     .sort((a, b) => state.favorites[b] - state.favorites[a])
-    .map(id => state.stories[id])
+    .map(id => state.stories[id]),
+  needCacheStories: (state, getters) => getters.latestStories.reduce((p, c) => {
+    return p.concat(c.stories.filter((story) => !state.storyDetails[story.id]))
+  }, []).map(({ id }) => id)
 }
 
 // actions
@@ -39,6 +42,7 @@ const actions = {
       })
   },
   fetchStoryDetail ({ commit, state }, { id }) {
+    if (state.storyDetails[id]) return Promise.resolve(state.storyDetails[id])
     return fetchStoryDetail(id)
       .then(detail => {
         commit(types.FETCH_STORY_DETAIL_SUCCESS, { id, detail })
@@ -64,11 +68,9 @@ const mutations = {
   },
 
   [types.FETCH_STORY_DETAIL_SUCCESS] (state, { id, detail }) {
-    state.storyDetails = Object.assign({}, state.storyDetails, {
-      [id]: Object.assign({}, detail, {
-        body: imgURLFilter(detail.body)
-      })
-    })
+    Vue.set(state.storyDetails, id, Object.assign({}, detail, {
+      body: imgURLFilter(detail.body)
+    }))
   },
 
   [types.SET_FAVORITE] (state, { id, isFavor }) {

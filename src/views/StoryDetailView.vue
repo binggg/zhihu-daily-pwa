@@ -32,7 +32,7 @@
   export default {
     name: 'StoryDetailView',
     created () {
-      if (this.id && !this.detail) {
+      if (this.id) {
         this.$store.dispatch('fetchStoryDetail', { id: this.id })
       }
       this.syncAppTitle()

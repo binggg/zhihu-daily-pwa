@@ -51,6 +51,13 @@ export default {
   name: 'app',
   created () {
     this.$store.dispatch('fetchLatestNews')
+      .then(() => {
+        this.needCacheStories.forEach(id => {
+          setTimeout(() => {
+            this.$store.dispatch('fetchStoryDetail', { id })
+          }, 50)
+        })
+      })
   },
   computed: {
     title () {
@@ -58,6 +65,9 @@ export default {
     },
     actions () {
       return this.$store.state.actions
+    },
+    needCacheStories () {
+      return this.$store.getters.needCacheStories
     }
   }
 }
