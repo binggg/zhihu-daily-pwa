@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import {
   fetchLatestNews,
   fetchStoryDetail
@@ -13,7 +14,8 @@ const state = {
   top: [],
   stories: {},
   date: {},
-  storyDetails: {}
+  storyDetails: {},
+  favorites: {}
 }
 
 // getters
@@ -21,7 +23,11 @@ const getters = {
   topStories: state => state.top.map((id) => state.stories[id]),
   latestStories: state => Object.keys(state.date)
     .sort((a, b) => b - a)
-    .map(date => ({date, stories: state.date[date].map((id) => state.stories[id])}))
+    .map(date => ({date, stories: state.date[date].map((id) => state.stories[id])})),
+  favoriteStories: state => Object.keys(state.favorites)
+    .filter(id => state.favorites[id])
+    .sort((a, b) => state.favorites[b] - state.favorites[a])
+    .map(id => state.stories[id])
 }
 
 // actions
@@ -63,8 +69,11 @@ const mutations = {
         body: imgURLFilter(detail.body)
       })
     })
-  }
+  },
 
+  [types.SET_FAVORITE] (state, { id, isFavor }) {
+    Vue.set(state.favorites, id, isFavor ? new Date().valueOf() : null)
+  }
 }
 
 export default {

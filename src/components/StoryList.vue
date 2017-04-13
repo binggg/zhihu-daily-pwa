@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h6 class="story-list__header">{{ date | dateHeadingFilter }}</h6>
+    <h6 class="story-list__header" v-if="date">{{ date | dateHeadingFilter }}</h6>
     <ul class="mdl-list mdl-list__border">
       <router-link v-for="story in stories"  :to="'/story/' + story.id" class="mdl-list__item mdl-list__item--three-line">
         <span class="mdl-list__item-primary-content">

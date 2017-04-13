@@ -27,10 +27,11 @@
           <div class="mdl-layout-title">
             知乎日报 PWA
           </div>
+          <small style="color:#ccc;">1.0.1</small>
         </div>
          <nav class="mdl-navigation">
         <router-link class="mdl-navigation__link" to="/"><i class="material-icons">home</i> 首页</router-link>
-        <router-link class="mdl-navigation__link" to="/favorite"><i class="material-icons">star</i>  我的收藏</router-link>
+        <router-link class="mdl-navigation__link" to="/favorites"><i class="material-icons">star</i>  我的收藏</router-link>
         </nav>
       </div>
       <main class="mdl-layout__content">

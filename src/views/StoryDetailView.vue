@@ -17,10 +17,7 @@
       </div>
       <div class="page-content__inner">
         <div class="detail-content" v-html="detail && detail.body"></div>
-          <!-- Colored FAB button with ripple -->
-          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-            <i class="material-icons">star</i>
-          </button>
+        <Favorite :id="id"></Favorite>
       </div>
     </div>
   </div>
@@ -31,6 +28,7 @@
   import {
     imgURLFilter
   } from '../filters'
+  import Favorite from 'src/components/Favorite'
   export default {
     name: 'StoryDetailView',
     created () {
@@ -43,6 +41,9 @@
       detail (val) {
         this.syncAppTitle()
       }
+    },
+    components: {
+      Favorite
     },
     computed: {
       id () {
