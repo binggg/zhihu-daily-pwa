@@ -2,7 +2,8 @@
   <div class="">
     <h6 class="story-list__header" v-if="date">{{ date | dateHeadingFilter }}</h6>
     <ul class="mdl-list mdl-list__border">
-      <router-link v-for="story in stories"  :to="'/story/' + story.id" class="mdl-list__item mdl-list__item--three-line">
+      <router-link v-for="story in stories"
+        :to="'/story/' + story.id" class="mdl-list__item mdl-list__item--three-line">
         <span class="mdl-list__item-primary-content">
         <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
         <span>{{story.title}}</span>
@@ -70,7 +71,7 @@
     text-decoration: none;
   }
 
-  a.mdl-list__item::active {
+  a.mdl-list__item:active {
     background-color: #f7f7f7;
   }
 </style>
