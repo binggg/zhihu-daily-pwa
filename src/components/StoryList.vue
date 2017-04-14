@@ -72,6 +72,12 @@
   }
 
   a.mdl-list__item:active {
-    background-color: #f7f7f7;
+    background-color: #e0e0e0;
+  }
+  a.mdl-list__item:focus {
+    background-color: #e0e0e0;
+  }
+  a.mdl-list__item:hover {
+    background-color: #e0e0e0;
   }
 </style>
