@@ -50,6 +50,10 @@ import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
 import pack from '../package.json'
 require('./assets/material.css')
+
+// iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
+document.body.addEventListener('touchstart', function () { })
+
 export default {
   name: 'app',
   data () {
@@ -85,6 +89,8 @@ export default {
   html,
   body {
     height: 100%;
+    /* 可点击元素的背景色 */
+    -webkit-tap-highlight-color: transparent;
   }
 
   #app {
