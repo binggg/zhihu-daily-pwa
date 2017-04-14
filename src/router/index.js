@@ -13,5 +13,12 @@ const routes = [
 ]
 
 export default new VueRouter({
-  routes
+  mode: 'history',
+  routes,
+  beforeEach (from, to, next) {
+    Vue.nextTick(() => {
+      document.querySelector('main.mdl-layout__content').scrollTop = 0
+    })
+    next()
+  }
 })

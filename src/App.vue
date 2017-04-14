@@ -27,7 +27,7 @@
           <div class="mdl-layout-title">
             知乎日报 PWA
           </div>
-          <small style="color:#ccc;">1.0.2</small>
+          <small style="color:#ccc;">{{ version }}</small>
         </div>
          <nav class="mdl-navigation">
         <router-link class="mdl-navigation__link" to="/"><i class="material-icons">home</i> 首页</router-link>
@@ -36,7 +36,9 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <router-view></router-view>
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
         </div>
       </main>
     </div>
@@ -46,9 +48,15 @@
 <script>
 import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
+import pack from '../package.json'
 require('./assets/material.css')
 export default {
   name: 'app',
+  data () {
+    return {
+      version: pack.version
+    }
+  },
   created () {
     this.$store.dispatch('fetchLatestNews')
       .then(() => {
