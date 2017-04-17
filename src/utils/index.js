@@ -7,3 +7,11 @@ export const padStr = (str, len, char = ' ', left = true) => {
     return str + chars
   }
 }
+
+export function postMessage (msg) {
+  const controller = navigator.serviceWorker.controller
+
+  if (!controller) return
+
+  controller.postMessage(msg)
+}

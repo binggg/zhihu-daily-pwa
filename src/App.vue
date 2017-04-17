@@ -49,6 +49,7 @@
 import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
 import pack from '../package.json'
+import { postMessage } from './utils'
 require('./assets/material.css')
 
 // iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
@@ -83,17 +84,14 @@ export default {
           )).catch(() => {})
       })
       .then(() => {
-        let icon
+        let icon = require('./assets/logo.png')
         try {
-          icon = this.$store.getters.latestStories[0].stories[0].images[0]
+          // icon = this.$store.getters.latestStories[0].stories[0].images[0]
         } catch (e) {
           icon = require('./assets/logo.png')
         }
 
-        new window.Notification('知乎日报 PWA', {
-          icon,
-          body: '离线完成 ✅, 没网时也可以愉快地阅读了～ '
-        })
+        postMessage({ type: 'finish_offline', icon })
       })
   },
   computed: {

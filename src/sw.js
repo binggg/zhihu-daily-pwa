@@ -26,15 +26,31 @@
 self.addEventListener('offline', console.log)
 self.addEventListener('online', console.log)
 
-self.addEventListener('message', console.log)
+self.addEventListener('message', function (event) {
+  const {
+    data: {
+      type,
+      icon
+    }
+  } = event
+
+  switch (type) {
+    case 'finish_offline':
+      self.self.registration.showNotification('知乎日报 PWA', {
+        icon,
+        body: '离线完成 ✅, 没网时也可以愉快地阅读了～ '
+      })
+      break
+  }
+})
 
 self.addEventListener('push', function (event) {
   console.log('push')
-  // event.waitUntil(
-  //   self.self.registration.showNotification("发布新文章啦", {
-  //     body: "有新文章发布啦,点击查看。"
-  //   })
-  // )
+// event.waitUntil(
+//   self.self.registration.showNotification("发布新文章啦", {
+//     body: "有新文章发布啦,点击查看。"
+//   })
+// )
 })
 self.addEventListener('notificationclick', console.log)
 self.addEventListener('notificationclose', console.log)
