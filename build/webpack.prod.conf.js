@@ -75,7 +75,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    new OfflinePlugin()
+    new OfflinePlugin({
+      ServiceWorker: {
+        entry: './src/sw.js'
+      }
+    })
   ]
 })
 

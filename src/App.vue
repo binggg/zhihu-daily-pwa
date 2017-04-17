@@ -71,12 +71,21 @@ export default {
     }
   },
   created () {
+    window.Notification.requestPermission()
+      .then(function (result) {
+        console.log(result)
+      })
+
     this.$store.dispatch('fetchLatestNews')
       .then(() => {
-        this.needCacheStories.forEach(id => {
-          setTimeout(() => {
-            this.$store.dispatch('fetchStoryDetail', { id })
-          }, 50)
+        return Promise.all(this.needCacheStories
+          .map(id => this.$store.dispatch('fetchStoryDetail', { id })
+          )).catch(() => {})
+      })
+      .then(() => {
+        new window.Notification('知乎日报 PWA', {
+          icon: 'https://zh.zhaobing.site/api/pic4.zhimg.com/v2-ebc128977457b6684c8ae61a41cd263f.jpg',
+          body: '离线完成 ✅, 没网也可以愉快地阅读了～ '
         })
       })
   },
@@ -90,6 +99,8 @@ export default {
     needCacheStories () {
       return this.$store.getters.needCacheStories
     }
+  },
+  mounted () {
   }
 }
 </script>
