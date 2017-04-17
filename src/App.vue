@@ -83,9 +83,16 @@ export default {
           )).catch(() => {})
       })
       .then(() => {
+        let icon
+        try {
+          icon = this.$store.getters.latestStories[0].stories[0].images[0]
+        } catch (e) {
+          icon = require('./assets/logo.png')
+        }
+
         new window.Notification('知乎日报 PWA', {
-          icon: 'https://zh.zhaobing.site/api/pic4.zhimg.com/v2-ebc128977457b6684c8ae61a41cd263f.jpg',
-          body: '离线完成 ✅, 没网也可以愉快地阅读了～ '
+          icon,
+          body: '离线完成 ✅, 没网时也可以愉快地阅读了～ '
         })
       })
   },
