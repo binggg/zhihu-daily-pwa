@@ -88,7 +88,7 @@ export default {
       .then(() => {
         this.snackbar = {
           message: '离线成功！没有网络时也可以使用了',
-          timeout: 2000
+          timeout: 3000
         }
       })
   },

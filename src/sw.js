@@ -1,3 +1,4 @@
+import { imgURLFilter } from './filters'
 // self.addEventListener('push', event => {
 //   var dataPromise
 //   if (data in event) {
@@ -22,7 +23,6 @@
 //       })
 //   )
 // })
-
 self.addEventListener('offline', console.log)
 self.addEventListener('online', console.log)
 
@@ -52,10 +52,50 @@ self.addEventListener('push', function (event) {
 //   })
 // )
 })
-self.addEventListener('notificationclick', console.log)
+
+self.addEventListener('notificationclick', function (event) {
+  console.log('[Service Worker] Notification click Received.')
+
+  event.notification.close()
+
+  event.waitUntil(
+    clients.openWindow('https://zh.zhaobing.site')
+  )
+})
 self.addEventListener('notificationclose', console.log)
 
 self.addEventListener('error', console.log)
 self.addEventListener('unhandledrejection', console.log)
 
 self.addEventListener('beforeinstallprompt', console.log)
+
+/**
+ * 定时通知用户
+ */
+const timePoints = [ 8, 12, 22]
+setInterval(checkUpdate, 60 * 60 * 1000)
+
+function checkUpdate () {
+  var nowHour = new Date().getHours()
+
+  if (timePoints.indexOf(nowHour)) {
+    fetch('https://zh.zhaobing.site/api/zhihu/4/news/latest')
+      .then(res => res.json())
+      .then((data) => {
+        let icon = ''
+        let body = '📰 为您推荐的日报新鲜出炉啦'
+        try {
+          let story = data.stories[0]
+          icon = imgURLFilter(story.images[0])
+          body = story.title
+        } catch (e) {}
+        return { icon, body }
+      })
+      .then(({ icon, body }) => {
+        self.registration.showNotification('知乎日报 PWA', {
+          body,
+          icon
+        })
+      })
+  }
+}
