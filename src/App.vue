@@ -41,6 +41,7 @@
           </transition>
         </div>
       </main>
+      <SnackBar :data="snackbar"></SnackBar>
     </div>
   </div>
 </template>
@@ -49,7 +50,7 @@
 import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
 import pack from '../package.json'
-import { postMessage } from './utils'
+import SnackBar from './components/SnackBar'
 require('./assets/material.css')
 
 // iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
@@ -68,7 +69,8 @@ export default {
   name: 'app',
   data () {
     return {
-      version: pack.version
+      version: pack.version,
+      snackbar: {}
     }
   },
   created () {
@@ -84,14 +86,10 @@ export default {
           )).catch(() => {})
       })
       .then(() => {
-        let icon = require('./assets/logo.png')
-        try {
-          // icon = this.$store.getters.latestStories[0].stories[0].images[0]
-        } catch (e) {
-          icon = require('./assets/logo.png')
+        this.snackbar = {
+          message: '离线成功！没有网络时也可以使用了',
+          timeout: 2000
         }
-
-        postMessage({ type: 'finish_offline', icon })
       })
   },
   computed: {
@@ -106,6 +104,9 @@ export default {
     }
   },
   mounted () {
+  },
+  components: {
+    SnackBar
   }
 }
 </script>
