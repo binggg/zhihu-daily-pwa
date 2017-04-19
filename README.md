@@ -4,6 +4,10 @@
 
 > 非官方 知乎日报 PWA (Progressive Web App) 版本，基于 Vue.js 2.0
 
+![preview](./previews/01.jpg)
+
+![preview](./previews/02.jpg)
+
 ## 访问地址
 
 [知乎日报 PWA](https://zh.zhaobing.site)

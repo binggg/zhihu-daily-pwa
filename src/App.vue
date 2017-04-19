@@ -32,6 +32,7 @@
          <nav class="mdl-navigation">
         <router-link class="mdl-navigation__link" to="/"><i class="material-icons">home</i> 首页</router-link>
         <router-link class="mdl-navigation__link" to="/favorites"><i class="material-icons">star</i>  我的收藏</router-link>
+        <a class="mdl-navigation__link" href="https://github.com/binggg/zhihu-daily-pwa"><i class="material-icons">code</i>  Github</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
