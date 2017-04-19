@@ -15,3 +15,29 @@ export function postMessage (msg) {
 
   controller.postMessage(msg)
 }
+
+export function copyToClipboard (text) {
+  let span = document.createElement('span')
+  let result = false
+  let range = document.createRange()
+
+  span.innerText = text
+
+  document.body.appendChild(span)
+
+  range.selectNode(span)
+
+  window.getSelection().addRange(range)
+
+  try {
+    result = document.execCommand('copy')
+  } catch (err) {
+    console.log(err)
+  }
+
+  window.getSelection().removeAllRanges()
+
+  document.body.removeChild(span)
+
+  return result
+}

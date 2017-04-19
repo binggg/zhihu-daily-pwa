@@ -17,7 +17,7 @@
             <li :disabled="action.disabled" v-for="action in actions" class="mdl-menu__item">
               {{ action.name }}
             </li>
-            <li class="mdl-menu__item">复制链接</li>
+            <li class="mdl-menu__item" @click="copy">复制链接</li>
           </ul>
         </div>
       </header>
@@ -52,6 +52,7 @@ import 'material-design-icons/iconfont/material-icons.css'
 import 'material-design-lite/dist/material'
 import pack from '../package.json'
 import SnackBar from './components/SnackBar'
+import { copyToClipboard } from './utils'
 require('./assets/material.css')
 
 // iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
@@ -108,6 +109,23 @@ export default {
   },
   components: {
     SnackBar
+  },
+  methods: {
+    copy () {
+      let result = copyToClipboard(window.location.href)
+
+      if (result) {
+        this.snackbar = {
+          message: '复制链接成功！可以转发给朋友了',
+          timeout: 3000
+        }
+      } else {
+        this.snackbar = {
+          message: '复制链接失败！请手动分享链接',
+          timeout: 3000
+        }
+      }
+    }
   }
 }
 </script>
