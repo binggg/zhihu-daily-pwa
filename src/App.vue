@@ -37,7 +37,7 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <transition name="fade">
+          <transition name="slide-next">
             <router-view></router-view>
           </transition>
         </div>
@@ -117,7 +117,13 @@ export default {
   body {
     height: 100%;
     /* 可点击元素的背景色 */
+    font-size: 16px;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  p {
+    font-size: 16px!important;
+    line-height: 30px!important;
   }
 
   #app {
@@ -162,14 +168,25 @@ export default {
     display: inline-block;
   }
 
-  .fade-enter-active, .fade-leave-active {
+  .slide-prev-enter-active, .slide-prev-leave-active {
     transition: all .5s
   }
-  .fade-enter {
+  .slide-prev-enter {
+    transform: translate3d(-100%, 0, 0)
+  }
+
+  .slide-prev-leave-active {
     transform: translate3d(100%, 0, 0)
   }
 
-  .fade-leave-active {
+  .slide-next-enter-active, .slide-next-leave-active {
+    transition: all .5s
+  }
+  .slide-next-enter {
+    transform: translate3d(100%, 0, 0)
+  }
+
+  .slide-next-leave-active {
     transform: translate3d(-100%, 0, 0)
   }
 </style>
