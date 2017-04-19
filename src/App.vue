@@ -162,9 +162,13 @@ export default {
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
+    transition: all .5s
   }
-  .fade-enter, .fade-leave-active {
-    opacity: 0
+  .fade-enter {
+    transform: translate3d(100%, 0, 0)
+  }
+
+  .fade-leave-active {
+    transform: translate3d(-100%, 0, 0)
   }
 </style>
