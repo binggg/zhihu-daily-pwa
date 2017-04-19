@@ -76,7 +76,7 @@ export default {
     }
   },
   created () {
-    window.Notification.requestPermission()
+    window.Notification && window.Notification.requestPermission()
       .then(function (result) {
         console.log(result)
       })
