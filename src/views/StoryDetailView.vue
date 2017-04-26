@@ -28,7 +28,7 @@
   import {
     imgURLFilter
   } from '../filters'
-  import Favorite from 'src/components/Favorite'
+  import Favorite from '../components/Favorite.vue'
   export default {
     name: 'StoryDetailView',
     created () {

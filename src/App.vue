@@ -48,21 +48,20 @@
 </template>
 
 <script>
-import 'material-design-icons/iconfont/material-icons.css'
-import 'material-design-lite/dist/material'
 import pack from '../package.json'
 import SnackBar from './components/SnackBar'
 import { copyToClipboard } from './utils'
-require('./assets/material.css')
 
-// iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
-// https://developers.google.com/web/fundamentals/design-and-ui/input/touch/
-window.onload = function () {
-  if (/iP(hone|ad)/.test(window.navigator.userAgent)) {
-    var elements = document.querySelectorAll('button')
-    var emptyFunction = function () {}
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].addEventListener('touchstart', emptyFunction, false)
+if (typeof window !== 'undefined') {
+  // iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
+  // https://developers.google.com/web/fundamentals/design-and-ui/input/touch/
+  window.onload = function () {
+    if (/iP(hone|ad)/.test(window.navigator.userAgent)) {
+      var elements = document.querySelectorAll('button')
+      var emptyFunction = function () {}
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('touchstart', emptyFunction, false)
+      }
     }
   }
 }
@@ -76,12 +75,7 @@ export default {
     }
   },
   created () {
-    window.Notification && window.Notification.requestPermission()
-      .then(function (result) {
-        console.log(result)
-      })
-
-    this.$store.dispatch('fetchLatestNews')
+     this.$store.dispatch('fetchLatestNews')
       .then(() => {
         return Promise.all(this.needCacheStories
           .map(id => this.$store.dispatch('fetchStoryDetail', { id })
@@ -92,6 +86,12 @@ export default {
           message: '离线成功！没有网络时也可以使用了',
           timeout: 3000
         }
+      })
+  },
+  mounted () {
+    window.Notification && window.Notification.requestPermission()
+      .then(function (result) {
+        console.log(result)
       })
   },
   computed: {

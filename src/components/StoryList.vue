@@ -3,6 +3,7 @@
     <h6 class="story-list__header" v-if="date">{{ date | dateHeadingFilter }}</h6>
     <ul class="mdl-list mdl-list__border">
       <router-link v-for="story in stories"
+        :key="story.id"
         :to="'/story/' + story.id" class="mdl-list__item mdl-list__item--three-line">
         <span class="mdl-list__item-primary-content">
         <!--<i class="material-icons mdl-list__item-avatar">person</i>-->

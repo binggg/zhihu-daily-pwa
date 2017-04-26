@@ -2,7 +2,7 @@
   <div>
     <!--{{ topStories }}-->
     <div class="page-content__inner">
-      <StoryList v-for="storyList in latestStories"
+      <StoryList v-for="storyList in latestStories" :key="storyList.date"
         :date="storyList.date"
         :stories="storyList.stories"></StoryList>
     </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import StoryList from '../components/StoryList'
+  import StoryList from '../components/StoryList.vue'
   export default {
     name: 'StoryListView',
     components: {

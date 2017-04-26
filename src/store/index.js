@@ -9,6 +9,11 @@ import news from './modules/news'
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
+let plugins = []
+
+if (typeof window !== 'undefined') {
+  plugins.push(createPersistedState())
+}
 
 export default new Vuex.Store({
   actions,
@@ -23,5 +28,5 @@ export default new Vuex.Store({
     news
   },
   strict: debug,
-  plugins: [createPersistedState()]
+  plugins
 })

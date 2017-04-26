@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import StoryListView from '../views/StoryListView'
-import FavStoryListView from '../views/FavStoryListView'
-import StoryDetailView from '../views/StoryDetailView'
+import StoryListView from '../views/StoryListView.vue'
+import FavStoryListView from '../views/FavStoryListView.vue'
+import StoryDetailView from '../views/StoryDetailView.vue'
 
 Vue.use(VueRouter)
 

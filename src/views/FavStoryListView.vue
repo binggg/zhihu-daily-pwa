@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import StoryList from '../components/StoryList'
+  import StoryList from '../components/StoryList.vue'
   export default {
     name: 'FavStoryListView',
     components: {
