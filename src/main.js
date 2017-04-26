@@ -6,6 +6,15 @@ import store from './store'
 import router from './router'
 import 'material-design-icons/iconfont/material-icons.css'
 import './assets/material.css'
+import VueLazyload from 'vue-lazyload'
+
+// or with options
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: 'static/ring.gif',
+  attempt: 1
+})
 
 const app = new Vue({
   router,

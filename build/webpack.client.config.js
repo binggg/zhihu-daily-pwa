@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
 const HTMLPlugin = require('html-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
+const OfflinePlugin = require('offline-plugin');
 let configs = require('../config')
 let utils = require('./utils')
 
@@ -42,12 +43,10 @@ if (process.env.NODE_ENV === 'production') {
         warnings: false
       }
     }),
-    // auto generate service worker
-    new SWPrecachePlugin({
-      cacheId: 'vue-hn',
-      filename: 'service-worker.js',
-      dontCacheBustUrlsMatching: /./,
-      staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/]
+    new OfflinePlugin({
+      ServiceWorker: {
+        entry: './src/sw.js'
+      }
     })
   )
 }

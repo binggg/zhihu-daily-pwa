@@ -76,17 +76,17 @@ export default {
   },
   created () {
      this.$store.dispatch('fetchLatestNews')
-      .then(() => {
-        return Promise.all(this.needCacheStories
-          .map(id => this.$store.dispatch('fetchStoryDetail', { id })
-          )).catch(() => {})
-      })
-      .then(() => {
-        this.snackbar = {
-          message: '离线成功！没有网络时也可以使用了',
-          timeout: 3000
-        }
-      })
+      // .then(() => {
+      //   return Promise.all(this.needCacheStories
+      //     .map(id => this.$store.dispatch('fetchStoryDetail', { id })
+      //     )).catch(() => {})
+      // })
+      // .then(() => {
+      //   this.snackbar = {
+      //     message: '离线成功！没有网络时也可以使用了',
+      //     timeout: 3000
+      //   }
+      // })
   },
   mounted () {
     window.Notification && window.Notification.requestPermission()

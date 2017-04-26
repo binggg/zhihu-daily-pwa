@@ -3,7 +3,7 @@ const vueConfig = require('./vue-loader.config')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const projectRoot = path.resolve(__dirname, '../')
 const isProd = process.env.NODE_ENV === 'production'
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: isProd
@@ -77,7 +77,10 @@ module.exports = {
     maxEntrypointSize: 300000,
     hints: isProd ? 'warning' : false
   },
-  plugins: [...(isProd ? [] : [
-    new FriendlyErrorsPlugin()
-  ]), new ExtractTextPlugin('styles.css')]
+  plugins: [
+    ...(isProd ? [] : [
+      new FriendlyErrorsPlugin()
+    ]),
+    new ExtractTextPlugin('styles.css')
+  ]
 }

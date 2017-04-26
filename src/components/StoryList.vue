@@ -14,7 +14,9 @@
         </span>-->
         </span>
         <span class="mdl-list__item-secondary-content">
-          <div class="story-cover" :style="{ backgroundImage: 'url(' + imgURLFilter(story.image || story.images[0]) + ')' }">
+          <div class="story-cover"
+            v-lazy:background-image="imgURLFilter(story.image || story.images[0])"
+          >
           </div>
         <!--<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>-->
       </span>
