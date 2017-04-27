@@ -49,13 +49,14 @@ app.use(compression({ threshold: 0 }))
 // app.use(favicon('./public/logo-48.png'))
 app.use('/dist', serve('./dist', true))
 app.use('/static', serve('./static', true))
+app.use('/sw.js', serve('./dist/sw.js'))
 
 app.get('*', (req, res) => {
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.')
   }
 
-  const s = Date.now()
+  const s = new Date().valueOf()
 
   res.setHeader("Content-Type", "text/html")
   res.setHeader("Server", serverInfo)
@@ -73,7 +74,7 @@ app.get('*', (req, res) => {
 
   renderer.renderToStream({ url: req.url })
     .on('error', errorHandler)
-    .on('end', () => console.log(`whole request: ${Date.now() - s}ms`))
+    .on('end', () => console.log(`whole request: ${new Date().valueOf() - s}ms`))
     .pipe(res)
 })
 

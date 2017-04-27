@@ -35,20 +35,22 @@ const config = merge(base, {
   ]
 })
 
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(
-    // minify JS
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
-    new OfflinePlugin({
-      ServiceWorker: {
-        entry: './src/sw.js'
-      }
-    })
-  )
-}
+// if (process.env.NODE_ENV === 'production') {
+config.plugins.push(
+  // minify JS
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }),
+  new OfflinePlugin({
+    ServiceWorker: {
+      entry: './src/sw.js',
+      autoUpdate: true,
+      publicPath: '/sw.js'
+    }
+  })
+)
+// }
 
 module.exports = config

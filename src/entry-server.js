@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 // Since data fetching is async, this function is expected to
 // return a Promise that resolves to the app instance.
 export default context => {
-  const s = isDev && Date.now()
+  const s = isDev && new Date().valueOf()
 
   return new Promise((resolve, reject) => {
     // set router's location
@@ -31,7 +31,7 @@ export default context => {
       Promise.all(matchedComponents.map(component => {
         return component.preFetch && component.preFetch(store)
       })).then(() => {
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+        isDev && console.log(`data pre-fetch: ${new Date().valueOf() - s}ms`)
         // After all preFetch hooks are resolved, our store is now
         // filled with the state needed to render the app.
         // Expose the state on the render context, and let the request handler

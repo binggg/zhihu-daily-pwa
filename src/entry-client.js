@@ -9,7 +9,6 @@ require('offline-plugin/runtime').install()
 // prime the store with server-initialized state.
 // the state is determined during SSR and inlined in the page markup.
 if (window.__INITIAL_STATE__) {
-  console.log(store)
   store.replaceState(window.__INITIAL_STATE__)
 }
 
