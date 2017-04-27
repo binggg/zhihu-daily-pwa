@@ -44,12 +44,13 @@ config.plugins.push(
     }
   }),
   new OfflinePlugin({
+    externals: [
+      '/',
+      '/static/*'
+    ],
     ServiceWorker: {
       entry: './src/sw.js',
       autoUpdate: true,
-      externals: [
-        '/'
-      ],
       publicPath: '/sw.js'
     }
   })
