@@ -46,7 +46,9 @@ config.plugins.push(
   new OfflinePlugin({
     externals: [
       '/',
-      '/static/*'
+      '/static/logo.png',
+      '/static/manifest.json',
+      '/static/ring.gif'
     ],
     ServiceWorker: {
       entry: './src/sw.js',
